@@ -1,10 +1,16 @@
 import {createStore} from 'redux';
 
-const counterReducer = (state = { counter: 0 }, action) => {
+const initialState = {
+  counter: 0,
+  showCounter: true
+};
+
+const counterReducer = (state = initialState, action) => {
   const stateCopy = { ...state };
   console.log('On est dans le reducer, action: ', action , 'state: ', state, 'stateCopy', stateCopy);
 
   if (action.type === 'increment') {
+
     stateCopy.counter++;
   }
 
@@ -14,6 +20,10 @@ const counterReducer = (state = { counter: 0 }, action) => {
 
   if (action.type === 'decrement') {
     stateCopy.counter--;
+  }
+
+  if (action.type === 'toggle') {
+    stateCopy.showCounter = !stateCopy.showCounter;
   }
 
   console.log(stateCopy);
