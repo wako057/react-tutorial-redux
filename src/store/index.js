@@ -8,6 +8,10 @@ const counterReducer = (state = { counter: 0 }, action) => {
     stateCopy.counter++;
   }
 
+  if (action.type === 'increase') {
+    stateCopy.counter = stateCopy.counter + action.amount;
+  }
+
   if (action.type === 'decrement') {
     stateCopy.counter--;
   }
